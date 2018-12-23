@@ -285,7 +285,7 @@ _Pragma("clang diagnostic pop")
             break;
     }
     
-    CGRect frame = CGRectMake(xOrigin, yOrigin, [self getContentSize].width,[self getContentSize].height);
+    CGRect frame = CGRectMake(xOrigin, yOrigin, [self getContentSize].width,[self getContentSize].height * 5);
     
     //frame adjusting horizontally
     if (frame.origin.x < superViewFrame.origin.x) {
