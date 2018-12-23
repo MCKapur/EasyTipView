@@ -307,7 +307,11 @@ _Pragma("clang diagnostic pop")
 #pragma mark - Helpers
 
 - (CGSize)getTextSize {
-    NSDictionary *attributes = @{NSFontAttributeName:_preferences.drawing.font};
+    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+    paragraphStyle.alignment = _preferences.drawing.textAlignment;
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraphStyle.lineSpacing = _preferences.drawing.lineSpacing;
+    NSDictionary *attributes = @{NSFontAttributeName:_preferences.drawing.font, NSParagraphStyleAttributeName: paragraphStyle};
     
     CGSize textSize = [self.text boundingRectWithSize:CGSizeMake(_preferences.positioning.maxWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
     
