@@ -256,7 +256,6 @@ _Pragma("clang diagnostic pop")
             _arrowTip = CGPointMake(_preferences.drawing.arrowPostion == Left ? _preferences.positioning.bubbleVInset : [self getContentSize].width - _preferences.positioning.bubbleVInset,arrowTipXOrigin);
             break;
     }
-    self.frame = frame;
 }
 
 - (CGRect)computeFrameWithPosition:(ArrowPosition)position referenceFrame:(CGRect)refViewFrame superViewFrame:(CGRect)superViewFrame {
@@ -285,7 +284,7 @@ _Pragma("clang diagnostic pop")
             break;
     }
     
-    CGRect frame = CGRectMake(xOrigin, yOrigin, [self getContentSize].width,[self getContentSize].height * 5);
+    CGRect frame = CGRectMake(xOrigin, yOrigin, [self getContentSize].width,[self getContentSize].height);
     
     //frame adjusting horizontally
     if (frame.origin.x < superViewFrame.origin.x) {
