@@ -54,6 +54,7 @@ _Pragma("clang diagnostic pop")
         _borderWidth = 0;
         _borderColor = [UIColor clearColor];
         _font = [UIFont systemFontOfSize:15];
+        _lineSpacing = 0;
     }
     return self;
 }
@@ -419,7 +420,8 @@ _Pragma("clang diagnostic pop")
     NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
     paragraphStyle.alignment = _preferences.drawing.textAlignment;
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-    
+    paragraphStyle.lineSpacing = _preferences.drawing.lineSpacing;
+
     CGRect textRect = CGRectMake(bubbleFrame.origin.x + (bubbleFrame.size.width - [self getTextSize].width) / 2, bubbleFrame.origin.y + (bubbleFrame.size.height - [self getTextSize].height) / 2, [self getTextSize].width, [self getTextSize].height);
     
     [self.text drawInRect:textRect withAttributes:@{NSFontAttributeName:_preferences.drawing.font, NSForegroundColorAttributeName: _preferences.drawing.foregroundColor, NSParagraphStyleAttributeName: paragraphStyle}];
