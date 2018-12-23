@@ -256,6 +256,8 @@ _Pragma("clang diagnostic pop")
             _arrowTip = CGPointMake(_preferences.drawing.arrowPostion == Left ? _preferences.positioning.bubbleVInset : [self getContentSize].width - _preferences.positioning.bubbleVInset,arrowTipXOrigin);
             break;
     }
+    
+    self.frame = frame;
 }
 
 - (CGRect)computeFrameWithPosition:(ArrowPosition)position referenceFrame:(CGRect)refViewFrame superViewFrame:(CGRect)superViewFrame {
