@@ -90,8 +90,7 @@ _Pragma("clang diagnostic pop")
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _dismissTra
-            nsform = CGAffineTransformMakeScale(0.1, 0.1);
+        _dismissTransform = CGAffineTransformMakeScale(0.1, 0.1);
         _showInitialTransform = CGAffineTransformMakeScale(0, 0);
         _showFinalTransform = CGAffineTransformIdentity;
         _springDamping = 0.7;
