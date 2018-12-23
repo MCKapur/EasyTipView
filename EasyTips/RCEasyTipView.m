@@ -51,6 +51,7 @@ _Pragma("clang diagnostic pop")
         _backgroundColor = [UIColor redColor];
         _arrowPostion = Left;
         _textAlignment = NSTextAlignmentCenter;
+        _lineSpacing = 0;
         _borderWidth = 0;
         _borderColor = [UIColor clearColor];
         _font = [UIFont systemFontOfSize:15];
@@ -418,6 +419,7 @@ _Pragma("clang diagnostic pop")
 - (void)drawTextWithFrame:(CGRect)bubbleFrame andContext:(CGContextRef)context {
     NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
     paragraphStyle.alignment = _preferences.drawing.textAlignment;
+    paragraphStyle.lineSpacing = _preferences.drawing.lineSpacing;
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     
     CGRect textRect = CGRectMake(bubbleFrame.origin.x + (bubbleFrame.size.width - [self getTextSize].width) / 2, bubbleFrame.origin.y + (bubbleFrame.size.height - [self getTextSize].height) / 2, [self getTextSize].width, [self getTextSize].height);
