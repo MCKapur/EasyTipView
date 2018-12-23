@@ -46,6 +46,7 @@ typedef NS_ENUM(NSInteger, ArrowPosition){
 @property (nonatomic, strong) UIColor *borderColor;
 @property (nonatomic, assign) CGFloat borderWidth;
 @property (nonatomic, strong) UIFont *font;
+@property (nonatomic, assign) CGFloat lineSpacing;
 
 @end
 
