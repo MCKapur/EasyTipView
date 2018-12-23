@@ -90,7 +90,8 @@ _Pragma("clang diagnostic pop")
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _dismissTransform = CGAffineTransformMakeScale(0.1, 0.1);
+        _dismissTra
+            nsform = CGAffineTransformMakeScale(0.1, 0.1);
         _showInitialTransform = CGAffineTransformMakeScale(0, 0);
         _showFinalTransform = CGAffineTransformIdentity;
         _springDamping = 0.7;
@@ -326,7 +327,7 @@ _Pragma("clang diagnostic pop")
 }
 
 - (CGSize)getContentSize {
-    return CGSizeMake([self getTextSize].width + _preferences.positioning.textHInset * 2 + _preferences.positioning.bubbleHInset * 2, [self getTextSize].height + _preferences.positioning.textVInset * 2 + _preferences.positioning.bubbleVInset * 2 + _preferences.drawing.arrowHeight);
+    return CGSizeMake([self getTextSize].width + _preferences.positioning.textHInset * 2 + _preferences.positioning.bubbleHInset * 2, [self getTextSize].height * 2 + _preferences.positioning.textVInset * 2 + _preferences.positioning.bubbleVInset * 2 + _preferences.drawing.arrowHeight);
 }
 
 - (BOOL)isFrame:(CGRect)frame forReferenceViewFrame:(CGRect)refViewFrame {
