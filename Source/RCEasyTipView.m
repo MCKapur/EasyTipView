@@ -463,9 +463,9 @@ _Pragma("clang diagnostic pop")
 - (void)showAnimated:(BOOL)animated forView:(UIView *)view withinSuperView:(UIView *)superView {
     NSAssert(superView == nil || [view hasSuperView:superView], @"The supplied superview is not a direct nor an indirect superview of the supplied reference view. The superview passed to this method should be a direct or an indirect superview of the reference view. To display the tooltip within the main window, ignore the superview parameter.");
     
-    if (!superView) {
-        superView = [[[UIApplication sharedApplication] windows] firstObject];
-    }
+//     if (!superView) {
+//         superView = [[[UIApplication sharedApplication] windows] firstObject];
+//     }
     CGAffineTransform initialTransform = _preferences.animating.showInitialTransform;
     CGAffineTransform finalTransform = _preferences.animating.showFinalTransform;
     CGFloat initialAlpha = _preferences.animating.showInitialAlpha;
