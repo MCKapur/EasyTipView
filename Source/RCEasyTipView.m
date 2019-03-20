@@ -51,10 +51,10 @@ _Pragma("clang diagnostic pop")
         _backgroundColor = [UIColor redColor];
         _arrowPostion = Left;
         _textAlignment = NSTextAlignmentCenter;
+        _lineSpacing = 0;
         _borderWidth = 0;
         _borderColor = [UIColor clearColor];
         _font = [UIFont systemFontOfSize:15];
-        _lineSpacing = 0;
     }
     return self;
 }
@@ -256,7 +256,6 @@ _Pragma("clang diagnostic pop")
             _arrowTip = CGPointMake(_preferences.drawing.arrowPostion == Left ? _preferences.positioning.bubbleVInset : [self getContentSize].width - _preferences.positioning.bubbleVInset,arrowTipXOrigin);
             break;
     }
-    
     self.frame = frame;
 }
 
@@ -308,11 +307,7 @@ _Pragma("clang diagnostic pop")
 #pragma mark - Helpers
 
 - (CGSize)getTextSize {
-    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
-    paragraphStyle.alignment = _preferences.drawing.textAlignment;
-    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-    paragraphStyle.lineSpacing = _preferences.drawing.lineSpacing;
-    NSDictionary *attributes = @{NSFontAttributeName:_preferences.drawing.font, NSParagraphStyleAttributeName: paragraphStyle};
+    NSDictionary *attributes = @{NSFontAttributeName:_preferences.drawing.font};
     
     CGSize textSize = [self.text boundingRectWithSize:CGSizeMake(_preferences.positioning.maxWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
     
@@ -424,9 +419,9 @@ _Pragma("clang diagnostic pop")
 - (void)drawTextWithFrame:(CGRect)bubbleFrame andContext:(CGContextRef)context {
     NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
     paragraphStyle.alignment = _preferences.drawing.textAlignment;
-    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.lineSpacing = _preferences.drawing.lineSpacing;
-
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    
     CGRect textRect = CGRectMake(bubbleFrame.origin.x + (bubbleFrame.size.width - [self getTextSize].width) / 2, bubbleFrame.origin.y + (bubbleFrame.size.height - [self getTextSize].height) / 2, [self getTextSize].width, [self getTextSize].height);
     
     [self.text drawInRect:textRect withAttributes:@{NSFontAttributeName:_preferences.drawing.font, NSForegroundColorAttributeName: _preferences.drawing.foregroundColor, NSParagraphStyleAttributeName: paragraphStyle}];
@@ -449,7 +444,7 @@ _Pragma("clang diagnostic pop")
 }
 
 - (void)handleTap:(UIGestureRecognizer *)gesture {
-    if (gesture.state == UIGestureRecognizerStateEnded) {
+    if (gesture.state == UIGestureRecognizerStateBegan) {
         weakify(self);
         [self dismissWithCompletion:^{
             strongify(self);
@@ -565,3 +560,4 @@ _Pragma("clang diagnostic pop")
 }
 
 @end
+
