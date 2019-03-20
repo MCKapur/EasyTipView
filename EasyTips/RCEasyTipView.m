@@ -444,7 +444,7 @@ _Pragma("clang diagnostic pop")
 }
 
 - (void)handleTap:(UIGestureRecognizer *)gesture {
-    if (gesture.state == UIGestureRecognizerStateEnded) {
+    if (gesture.state == UIGestureRecognizerStateBegan) {
         weakify(self);
         [self dismissWithCompletion:^{
             strongify(self);
@@ -474,7 +474,11 @@ _Pragma("clang diagnostic pop")
     self.alpha = initialAlpha;
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [self addGestureRecognizer:tapGesture];
+    [self addGestureRecognizer:swipeGesture];
+    [self addGestureRecognizer:panGesture];
     
     [superView addSubview:self];
     
